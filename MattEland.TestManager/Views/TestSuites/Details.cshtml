@@ -1,42 +1,51 @@
 ﻿@model MattEland.TestManager.Models.TestSuite
 
 @{
-    ViewData["Title"] = "Details";
+  ViewData["Title"] = "Details";
 }
 
 <h1>Details</h1>
 
 <div>
-    <h4>Test Suite</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateCreatedUtc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateCreatedUtc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateModifiedUtc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateModifiedUtc)
-        </dd>
-    </dl>
+  <h4>Test Suite</h4>
+  <hr />
+  <dl class="row">
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.Description)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.Description)
+    </dd>
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.DateCreatedUtc)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.DateCreatedUtc)
+    </dd>
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.DateModifiedUtc)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.DateModifiedUtc)
+    </dd>
+  </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+  <h2>Test Cases</h2>
+  <ul>
+    @foreach (var item in Model.TestCases)
+    {
+    <li><a asp-action="Details" asp-controller="TestCases" asp-route-id="@item.Id">@item.Name</a></li>
+    }
+  </ul>
+</div>
+<div>
+  <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+  <a asp-action="Index">Back to List</a>
 </div>

@@ -32,6 +32,7 @@ namespace MattEland.TestManager.Controllers
             }
 
             var testSuite = await _context.TestSuite
+                .Include(m => m.TestCases)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (testSuite == null)
             {
