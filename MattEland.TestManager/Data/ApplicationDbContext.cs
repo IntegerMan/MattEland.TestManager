@@ -14,5 +14,6 @@ namespace MattEland.TestManager.Data
         {
         }
         public DbSet<MattEland.TestManager.Models.TestSuite> TestSuite { get; set; }
+        public DbSet<MattEland.TestManager.Models.TestCase> TestCase { get; set; }
     }
 }

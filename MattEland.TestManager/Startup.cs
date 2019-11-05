@@ -65,6 +65,15 @@ namespace MattEland.TestManager
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            ApplyDatabaseMigrations(app);
+        }
+
+        private static void ApplyDatabaseMigrations(IApplicationBuilder app)
+        {
+            using var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+
+            scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
         }
     }
 }
